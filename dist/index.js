@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -118,7 +120,7 @@ var Dropdown = function (_Component) {
       var _classNames;
 
       var optionClass = (0, _classnames2.default)((_classNames = {}, _defineProperty(_classNames, this.props.baseClassName + '-option', true), _defineProperty(_classNames, 'is-selected', option === this.state.selected), _classNames));
-
+      console.log(typeof option === 'undefined' ? 'undefined' : _typeof(option));
       var value = option.value || option.label || option;
       var label = option.label || option.value || option;
 
@@ -129,6 +131,7 @@ var Dropdown = function (_Component) {
           className: optionClass,
           onMouseDown: this.setValue.bind(this, value, label),
           onClick: this.setValue.bind(this, value, label) },
+        'asd-',
         label
       );
     }
@@ -155,6 +158,11 @@ var Dropdown = function (_Component) {
           return _react2.default.createElement(
             'div',
             { className: baseClassName + '-group', key: option.name },
+            _react2.default.createElement(
+              'div',
+              null,
+              'asdas'
+            ),
             groupTitle,
             _options
           );
@@ -174,7 +182,9 @@ var Dropdown = function (_Component) {
     value: function handleDocumentClick(event) {
       if (this.mounted) {
         if (!_reactDom2.default.findDOMNode(this).contains(event.target)) {
-          this.setState({ isOpen: false });
+          if (this.state.isOpen) {
+            this.setState({ isOpen: false });
+          }
         }
       }
     }
@@ -209,6 +219,7 @@ var Dropdown = function (_Component) {
         _react2.default.createElement(
           'div',
           { className: baseClassName + '-control ' + disabledClass, onMouseDown: this.handleMouseDown.bind(this), onTouchEnd: this.handleMouseDown.bind(this) },
+          '123 ',
           value,
           _react2.default.createElement('span', { className: baseClassName + '-arrow' })
         ),

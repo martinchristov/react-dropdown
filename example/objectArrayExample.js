@@ -17,6 +17,7 @@ class ObjectArrayExample extends Component {
 
   render () {
     const options = [
+			{ value: 0, label: 'nothing'},
       { value: 'one', label: 'One' },
       { value: 'two', label: 'Two' },
       {
