@@ -120,9 +120,15 @@ var Dropdown = function (_Component) {
       var _classNames;
 
       var optionClass = (0, _classnames2.default)((_classNames = {}, _defineProperty(_classNames, this.props.baseClassName + '-option', true), _defineProperty(_classNames, 'is-selected', option === this.state.selected), _classNames));
-      console.log(typeof option === 'undefined' ? 'undefined' : _typeof(option));
-      var value = option.value || option.label || option;
-      var label = option.label || option.value || option;
+      var value = void 0;
+      var label = void 0;
+      if ((typeof option === 'undefined' ? 'undefined' : _typeof(option)) === 'object') {
+        value = option.value;
+        label = option.label;
+      } else {
+        value = option;
+        label = option;
+      }
 
       return _react2.default.createElement(
         'div',
@@ -131,7 +137,6 @@ var Dropdown = function (_Component) {
           className: optionClass,
           onMouseDown: this.setValue.bind(this, value, label),
           onClick: this.setValue.bind(this, value, label) },
-        'asd-',
         label
       );
     }
@@ -158,11 +163,6 @@ var Dropdown = function (_Component) {
           return _react2.default.createElement(
             'div',
             { className: baseClassName + '-group', key: option.name },
-            _react2.default.createElement(
-              'div',
-              null,
-              'asdas'
-            ),
             groupTitle,
             _options
           );
@@ -219,7 +219,6 @@ var Dropdown = function (_Component) {
         _react2.default.createElement(
           'div',
           { className: baseClassName + '-control ' + disabledClass, onMouseDown: this.handleMouseDown.bind(this), onTouchEnd: this.handleMouseDown.bind(this) },
-          '123 ',
           value,
           _react2.default.createElement('span', { className: baseClassName + '-arrow' })
         ),
