@@ -48,6 +48,7 @@ var Dropdown = function (_Component) {
       isOpen: false
     };
     _this.mounted = true;
+    _this.scrolled = props.scrolled;
     _this.handleDocumentClick = _this.handleDocumentClick.bind(_this);
     _this.fireChangeEvent = _this.fireChangeEvent.bind(_this);
     return _this;
@@ -170,10 +171,15 @@ var Dropdown = function (_Component) {
           return _this2.renderOption(option);
         }
       });
-
+      if(_props.scrolled){
+        setTimeout(() => {
+          var el = document.getElementsByClassName('Dropdown-menu');
+          if(el.length > 0) {el[0].scrollTop = _props.scrolled;}
+        });
+      }
       return ops.length ? ops : _react2.default.createElement(
         'div',
-        { className: baseClassName + '-noresults' },
+        { className: baseClassName + '-noresults', ref: ref => {console.log(ref)} },
         'No options found'
       );
     }
