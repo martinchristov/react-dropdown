@@ -172,7 +172,7 @@ var Dropdown = function (_Component) {
         }
       });
       if(_props.scrolled){
-        setTimeout(() => {
+        setTimeout(function(){
           var el = document.getElementsByClassName('Dropdown-menu');
           if(el.length > 0) {el[0].scrollTop = _props.scrolled;}
         });
