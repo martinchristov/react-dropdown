@@ -179,7 +179,7 @@ var Dropdown = function (_Component) {
       }
       return ops.length ? ops : _react2.default.createElement(
         'div',
-        { className: baseClassName + '-noresults', ref: ref => {console.log(ref)} },
+        { className: baseClassName + '-noresults' },
         'No options found'
       );
     }
